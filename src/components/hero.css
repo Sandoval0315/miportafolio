@@ -1,0 +1,354 @@
+/* Hero Section - Ultra Premium */
+.hero {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
+}
+
+/* Background con parallax */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  z-index: 1;
+}
+
+.gradient-bg {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 118, 117, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.8) 0%, transparent 50%);
+  animation: gradientShift 8s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-20px, -20px) scale(1.1); }
+}
+
+.grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Texto de fondo gigante */
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(8rem, 20vw, 24rem);
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.02);
+  z-index: 2;
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+/* Elementos flotantes */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05));
+  backdrop-filter: blur(10px);
+}
+
+.floating-1 {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
+  background: linear-gradient(135deg, rgba(120, 119, 198, 0.2), rgba(120, 119, 198, 0.1));
+}
+
+.floating-2 {
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  right: 15%;
+  background: linear-gradient(135deg, rgba(255, 118, 117, 0.15), rgba(255, 118, 117, 0.08));
+}
+
+.floating-3 {
+  width: 60px;
+  height: 60px;
+  top: 15%;
+  right: 25%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05));
+}
+
+.floating-4 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  left: 20%;
+  background: linear-gradient(135deg, rgba(120, 119, 198, 0.1), rgba(120, 119, 198, 0.05));
+}
+
+.floating-5 {
+  width: 40px;
+  height: 40px;
+  top: 35%;
+  left: 70%;
+  background: linear-gradient(135deg, rgba(255, 118, 117, 0.2), rgba(255, 118, 117, 0.1));
+}
+
+.floating-6 {
+  width: 90px;
+  height: 90px;
+  bottom: 40%;
+  right: 30%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.08), rgba(0,0,0,0.04));
+}
+
+/* Container principal */
+.hero-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+/* Título con efectos */
+.hero-title-container {
+  margin-bottom: 1.5rem;
+}
+
+.hero-title-word {
+  display: inline-block;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 300;
+  color: #000;
+  letter-spacing: -0.02em;
+  margin-right: 0.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-emoji {
+  display: inline-block;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-left: 0.2em;
+}
+
+/* Subtítulo rotativo */
+.hero-subtitle-container {
+  position: relative;
+  height: 3rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 400;
+  color: #666;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.subtitle-cursor {
+  width: 2px;
+  height: 1.5rem;
+  background: #000;
+  margin-left: 2px;
+}
+
+/* Botones CTA */
+.hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn.primary {
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+}
+
+.hero-btn.primary:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.hero-btn.secondary {
+  background: transparent;
+  color: #000;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+.hero-btn.secondary:hover {
+  border-color: #000;
+  background: rgba(0,0,0,0.05);
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(0,0,0,0.6);
+}
+
+.scroll-text {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 2rem;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+}
+
+/* Partículas */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 50%;
+  animation: float infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% { 
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    height: 100vh;
+    padding: 0 1rem;
+  }
+
+  .hero-container {
+    padding: 0 1rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .floating-elements {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-bg-text {
+    font-size: 6rem;
+  }
+
+  .hero-subtitle-container {
+    height: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Mejoras de rendimiento */
+.hero {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.floating-element {
+  will-change: transform;
+  transform: translateZ(0);
+}
