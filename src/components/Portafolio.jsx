@@ -12,181 +12,348 @@ export default function Portafolio() {
     offset: ["start end", "end start"]
   });
 
-  // Parallax effects
-  const yBackground = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const yCards = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const scaleCards = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 1.1]);
+  // Parallax effects mejorados y más suaves
+  const yBackground = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const yCards = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const scaleCards = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 1.05]);
+  const opacityCards = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.3, 1, 1, 0.8]);
 
-  // Datos de los proyectos con múltiples imágenes
+  // Datos de los proyectos mejorados
   const projects = [
     {
       id: 1,
       name: "PoliHome",
-      description: "Plataforma integral de gestión inmobiliaria que conecta propietarios, inquilinos y administradores.",
-      shortDescription: "Sistema web de venta y gestion de muebles ",
+      description: "Plataforma integral de gestión inmobiliaria que conecta propietarios, inquilinos y administradores con funcionalidades avanzadas de búsqueda, gestión de contratos y comunicación en tiempo real.",
+      shortDescription: "Sistema web de gestión inmobiliaria",
       images: [
         "/images/polihome.png",
-        "/images/polihome.png",
-        "/images/polihome.png"
+        "/images/polihome-dashboard.png",
+        "/images/polihome-mobile.png"
       ],
-      technologies: ["React", "Node.js", "MongoDB", "Express"],
+      technologies: ["MongoDB", "Express", "React", "Node.js"],
       liveUrl: "https://polihome.com",
       githubUrl: "https://github.com/usuario/polihome"
     },
     {
       id: 2,
       name: "SS Imports",
-      description: "Sistema ficticio de gestión de importaciones y exportaciones",
-      shortDescription: "Sistema de importaciones",
+      description: "Sistema completo de gestión de importaciones y exportaciones con tracking en tiempo real, gestión de inventarios, facturación automatizada y análisis de métricas comerciales avanzadas.",
+      shortDescription: "Sistema de importaciones y exportaciones",
       images: [
         "/images/912shots_so.png",
-        "/images/912shots_so.png",
-        "/images/912shots_so.png"
+        "/images/ssimports-dashboard.png",
+        "/images/ssimports-analytics.png"
       ],
-      technologies: ["Astro","React", "JavaScript"],
+      technologies: ["Astro", "React", "JavaScript"],
       liveUrl: "https://ssimports.com",
       githubUrl: "https://github.com/usuario/ssimports"
     },
-    {
+   /* {
       id: 3,
       name: "HealthSyncs",
-      description: "Aplicación móvil para el seguimiento de hábitos y logros de los usuarios.",
-      shortDescription: "App fitness",
+      description: "Aplicación móvil integral para el seguimiento de hábitos saludables, rutinas de fitness personalizadas, análisis detallado del progreso y sistema de gamificación para motivar a los usuarios.",
+      shortDescription: "App fitness y seguimiento de hábitos",
       images: [
         "/images/ecotracker.jpg",
-        "/images/ecotracker.jpg",
-        "/images/ecotracker.jpg"
+        "/images/healthsyncs-profile.jpg",
+        "/images/healthsyncs-stats.jpg"
       ],
-      technologies: ["Kotlin", "Java", "Oracle", "Andriod Studio"],
-      liveUrl: "https://ecotracker.app",
-      githubUrl: "https://github.com/usuario/ecotracker"
-    }
+      technologies: ["Kotlin", "Java", "Oracle", "Android Studio", "Firebase", "Git"],
+      liveUrl: "https://healthsyncs.app",
+      githubUrl: "https://github.com/usuario/healthsyncs"
+    }*/
   ];
+
+  // Variantes de animación para las cards
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 100, 
+      scale: 0.8,
+      rotateX: 15
+    },
+    visible: (index) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotateX: 0,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.2,
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      }
+    }),
+    hover: {
+      y: -12,
+      scale: 1.02,
+      transition: {
+        duration: 0.4,
+        type: "spring",
+        stiffness: 300
+      }
+    }
+  };
+
+  // Variantes para las tecnologías
+  const techVariants = {
+    hidden: { opacity: 0, scale: 0.5, y: 20 },
+    visible: (index) => ({
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 200
+      }
+    }),
+    hover: {
+      scale: 1.1,
+      y: -3,
+      transition: { duration: 0.2 }
+    }
+  };
 
   return (
     <>
       <section className="portfolio-section" id="portafolio" ref={sectionRef}>
-        {/* Elementos de fondo con parallax */}
+        {/* Elementos de fondo con parallax mejorado */}
         <motion.div
           className="portfolio-background"
           style={{ y: yBackground }}
         >
-          <div className="bg-element bg-element-1"></div>
-          <div className="bg-element bg-element-2"></div>
-          <div className="bg-element bg-element-3"></div>
+          <motion.div 
+            className="bg-element bg-element-1"
+            animate={{
+              rotate: [0, 360],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          <motion.div 
+            className="bg-element bg-element-2"
+            animate={{
+              rotate: [360, 0],
+              scale: [1, 0.8, 1]
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          <motion.div 
+            className="bg-element bg-element-3"
+            animate={{
+              rotate: [0, 180, 360],
+              scale: [1, 1.1, 0.9, 1]
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
         </motion.div>
 
         <div className="portfolio-container">
-          {/* Header mejorado */}
+          {/* Header con animaciones mejoradas */}
           <motion.div
             className="portfolio-header"
-            initial={{ opacity: 0, y: 80 }}
+            initial={{ opacity: 0, y: 100 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
           >
             <motion.span
               className="portfolio-subtitle"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             >
               Portfolio
             </motion.span>
             <motion.h2
               className="portfolio-title"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 1, delay: 0.4, type: "spring", stiffness: 100 }}
             >
               Proyectos Destacados
             </motion.h2>
             <motion.p
               className="portfolio-description"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 1, delay: 0.6, type: "spring" }}
             >
               Selección de proyectos que demuestran experiencia en desarrollo full-stack
             </motion.p>
           </motion.div>
 
-          {/* Grid de proyectos con parallax */}
+          {/* Grid de proyectos con animaciones y parallax mejorados */}
           <motion.div
             className="projects-grid"
-            style={{ y: yCards, scale: scaleCards }}
+            style={{ 
+              y: yCards, 
+              scale: scaleCards,
+              opacity: opacityCards
+            }}
           >
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 className="project-card"
-                initial={{ opacity: 0, y: 100, rotateX: 20 }}
-                animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.2,
-                  type: "spring",
-                  stiffness: 80
-                }}
-                whileHover={{ 
-                  y: -15,
-                  rotateY: 5,
-                  transition: { duration: 0.4 }
-                }}
+                custom={index}
+                variants={cardVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                whileHover="hover"
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setSelectedProject(project)}
               >
-                {/* Imagen del proyecto con zoom */}
+                {/* Imagen del proyecto con animaciones mejoradas */}
                 <div className="project-image-wrapper">
                   <motion.img 
                     src={project.images[0]} 
                     alt={project.name}
                     className="project-image"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1, delay: index * 0.2 + 0.5 }}
+                    whileHover={{ 
+                      scale: 1.08,
+                      transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] }
+                    }}
                     onError={(e) => {
-                      e.target.src = `https://via.placeholder.com/500x300/f5f5f5/000000?text=${project.name}`;
+                      e.target.src = `https://via.placeholder.com/400x220/f8f9fa/6c757d?text=${project.name.replace(' ', '%20')}`;
                     }}
                   />
                   
-                  {/* Overlay con hint */}
+                  {/* Overlay con animaciones mejoradas */}
                   <motion.div
                     className="project-overlay"
                     initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ 
+                      opacity: 1,
+                      transition: { duration: 0.3 }
+                    }}
                   >
-                    <div className="overlay-content">
+                    <motion.div
+                      className="overlay-content"
+                      initial={{ y: 30, scale: 0.8 }}
+                      whileHover={{ 
+                        y: 0, 
+                        scale: 1,
+                        transition: { 
+                          duration: 0.4,
+                          type: "spring",
+                          stiffness: 200
+                        }
+                      }}
+                    >
                       <span className="view-more-text">Ver más detalles</span>
-                      <svg className="expand-icon" viewBox="0 0 24 24" fill="none">
+                      <motion.svg 
+                        className="expand-icon" 
+                        viewBox="0 0 24 24" 
+                        fill="none"
+                        animate={{ 
+                          rotate: [0, 10, -10, 0],
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
                         <path d="M15 3h6v6M14 10l7-7M10 14l7-7" stroke="currentColor" strokeWidth="2"/>
-                      </svg>
-                    </div>
+                      </motion.svg>
+                    </motion.div>
                   </motion.div>
                 </div>
 
                 {/* Contenido de la card */}
                 <div className="project-content">
-                  <div className="project-header">
+                  <motion.div
+                    className="project-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.2 + 0.8 }}
+                  >
                     <h3 className="project-name">{project.name}</h3>
                     <span className="project-type">{project.shortDescription}</span>
-                  </div>
+                  </motion.div>
                   
-                  <p className="project-description">{project.description}</p>
+                  <motion.p
+                    className="project-description"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.2 + 1 }}
+                  >
+                    {project.description}
+                  </motion.p>
                   
-                  {/* Tecnologías */}
-                  <div className="tech-stack">
-                    {project.technologies.slice(0, 3).map((tech, idx) => (
-                      <span key={idx} className="tech-tag">{tech}</span>
+                  {/* Tecnologías con animaciones */}
+                  <motion.div
+                    className="tech-stack"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.8, delay: index * 0.2 + 1.2 }}
+                  >
+                    {project.technologies.slice(0, 4).map((tech, idx) => (
+                      <motion.span
+                        key={idx}
+                        className="tech-tag"
+                        custom={idx}
+                        variants={techVariants}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        whileHover="hover"
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {tech}
+                      </motion.span>
                     ))}
-                  </div>
+                    {project.technologies.length > 4 && (
+                      <motion.span
+                        className="tech-tag"
+                        custom={4}
+                        variants={techVariants}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        style={{ 
+                          background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.08) 100%)',
+                          fontWeight: 700
+                        }}
+                      >
+                        +{project.technologies.length - 4}
+                      </motion.span>
+                    )}
+                  </motion.div>
 
-                  {/* Botones de acción */}
-                  <div className="project-actions">
+                  {/* Botones de acción con animaciones */}
+                  <motion.div
+                    className="project-actions"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.2 + 1.4 }}
+                  >
                     <motion.a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-view"
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        boxShadow: "0 12px 25px rgba(0, 0, 0, 0.2)"
+                      }}
                       whileTap={{ scale: 0.95 }}
                       onClick={(e) => e.stopPropagation()}
                     >
@@ -198,26 +365,42 @@ export default function Portafolio() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-code"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotate: 5
+                      }}
+                      whileTap={{ scale: 0.9 }}
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <svg className="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                      <motion.svg 
+                        className="github-icon" 
+                        viewBox="0 0 24 24" 
+                        fill="currentColor"
+                        whileHover={{ 
+                          rotate: 360,
+                          transition: { duration: 0.6 }
+                        }}
+                      >
                         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                      </svg>
+                      </motion.svg>
                     </motion.a>
-                  </div>
+                  </motion.div>
                 </div>
 
-                {/* Efecto decorativo minimalista */}
-                <div className="card-accent"></div>
+                {/* Efecto decorativo animado */}
+                <motion.div 
+                  className="card-accent"
+                  initial={{ scaleX: 0 }}
+                  animate={isInView ? { scaleX: 1 } : {}}
+                  transition={{ duration: 0.8, delay: index * 0.2 + 0.6 }}
+                />
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Modal para mostrar más imágenes */}
+      {/* Modal mejorado con animaciones fluidas */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -225,74 +408,160 @@ export default function Portafolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
               className="modal-content"
-              initial={{ scale: 0.8, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 50 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              initial={{ 
+                scale: 0.7, 
+                opacity: 0, 
+                y: 100,
+                rotateX: 15
+              }}
+              animate={{ 
+                scale: 1, 
+                opacity: 1, 
+                y: 0,
+                rotateX: 0
+              }}
+              exit={{ 
+                scale: 0.8, 
+                opacity: 0, 
+                y: 50,
+                rotateX: -10
+              }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 25,
+                duration: 0.6
+              }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
+              <motion.button 
                 className="modal-close"
                 onClick={() => setSelectedProject(null)}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 90,
+                  backgroundColor: "rgba(255, 255, 255, 1)"
+                }}
+                whileTap={{ scale: 0.9 }}
               >
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2"/>
                 </svg>
-              </button>
+              </motion.button>
 
-              <div className="modal-header">
+              <motion.div 
+                className="modal-header"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
                 <h3>{selectedProject.name}</h3>
                 <p>{selectedProject.description}</p>
-              </div>
+              </motion.div>
 
-              <div className="modal-images">
+              <motion.div 
+                className="modal-images"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
                 {selectedProject.images.map((image, index) => (
                   <motion.img
                     key={index}
                     src={image}
                     alt={`${selectedProject.name} - Vista ${index + 1}`}
                     className="modal-image"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
+                    initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ 
+                      delay: 0.4 + index * 0.1,
+                      duration: 0.5,
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { duration: 0.3 }
+                    }}
                     onError={(e) => {
-                      e.target.src = `https://via.placeholder.com/400x250/f5f5f5/000000?text=Vista ${index + 1}`;
+                      e.target.src = `https://via.placeholder.com/400x220/f8f9fa/6c757d?text=Vista%20${index + 1}`;
                     }}
                   />
                 ))}
-              </div>
+              </motion.div>
 
-              <div className="modal-tech">
+              <motion.div 
+                className="modal-tech"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
                 <h4>Tecnologías utilizadas:</h4>
                 <div className="modal-tech-tags">
                   {selectedProject.technologies.map((tech, index) => (
-                    <span key={index} className="modal-tech-tag">{tech}</span>
+                    <motion.span
+                      key={index}
+                      className="modal-tech-tag"
+                      initial={{ opacity: 0, scale: 0.5, x: -20 }}
+                      animate={{ opacity: 1, scale: 1, x: 0 }}
+                      transition={{ 
+                        delay: 0.6 + index * 0.05,
+                        duration: 0.4,
+                        type: "spring",
+                        stiffness: 200
+                      }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        y: -2,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      {tech}
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="modal-actions">
-                <a 
+              <motion.div 
+                className="modal-actions"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+              >
+                <motion.a 
                   href={selectedProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="modal-btn modal-btn-primary"
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -3,
+                    boxShadow: "0 12px 25px rgba(0, 0, 0, 0.2)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   Ver Proyecto Live
-                </a>
-                <a 
+                </motion.a>
+                <motion.a 
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="modal-btn modal-btn-secondary"
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -3,
+                    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.1)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   Ver Código
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
