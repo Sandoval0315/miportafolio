@@ -24,17 +24,6 @@
   box-shadow: 0 1px 40px rgba(0, 0, 0, 0.04);
 }
 
-/* Tema oscuro */
-.dark .navbar {
-  background: rgba(0, 0, 0, 0.02);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.dark .navbar.scrolled {
-  background: rgba(0, 0, 0, 0.85);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 1px 40px rgba(255, 255, 255, 0.04);
-}
 
 .nav-container {
   width: 100%;
@@ -61,11 +50,6 @@
   justify-self: start;
   transition: all 0.3s ease;
 }
-
-.dark .nav-logo {
-  color: #fff;
-}
-
 .logo-text {
   color: inherit;
   font-weight: 300;
@@ -105,10 +89,6 @@
   position: relative;
 }
 
-.dark .nav-link {
-  color: #fff;
-}
-
 .nav-link:hover {
   opacity: 1;
   transform: translateY(-2px);
@@ -121,10 +101,6 @@
   border-radius: 50%;
   opacity: 0;
   transition: all 0.3s ease;
-}
-
-.dark .nav-dot {
-  background: #fff;
 }
 
 .nav-link:hover + .nav-dot {
@@ -149,20 +125,10 @@
   align-items: center;
 }
 
-.dark .nav-toggle {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
-}
-
 .nav-toggle:hover {
   background: rgba(0, 0, 0, 0.05);
   transform: scale(1.05);
   border-color: rgba(0, 0, 0, 0.2);
-}
-
-.dark .nav-toggle:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .hamburger-line {
@@ -173,10 +139,6 @@
   transform-origin: center;
   border-radius: 1px;
   opacity: 0.8;
-}
-
-.dark .hamburger-line {
-  background-color: #fff;
 }
 
 .nav-toggle:hover .hamburger-line {
@@ -209,12 +171,6 @@
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
 }
 
-.dark .mobile-sidebar {
-  background: rgba(0, 0, 0, 0.95);
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 4px 0 20px rgba(255, 255, 255, 0.05);
-}
-
 .sidebar-header {
   display: flex;
   justify-content: space-between;
@@ -223,19 +179,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.dark .sidebar-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .sidebar-logo {
   font-size: 1.1rem;
   font-weight: 300;
   color: #000;
   letter-spacing: -0.02em;
-}
-
-.dark .sidebar-logo {
-  color: #fff;
 }
 
 .sidebar-close {
@@ -251,28 +199,15 @@
   transition: all 0.3s ease;
 }
 
-.dark .sidebar-close {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
-}
-
 .sidebar-close:hover {
   background: rgba(0, 0, 0, 0.05);
   transform: scale(1.05);
-}
-
-.dark .sidebar-close:hover {
-  background: rgba(255, 255, 255, 0.05);
 }
 
 .sidebar-close svg {
   width: 16px;
   height: 16px;
   stroke: #000;
-}
-
-.dark .sidebar-close svg {
-  stroke: #fff;
 }
 
 .sidebar-nav {
@@ -297,20 +232,11 @@
   position: relative;
 }
 
-.dark .sidebar-link {
-  color: #fff;
-}
-
 .sidebar-link:hover {
   opacity: 1;
   background: rgba(0, 0, 0, 0.02);
   transform: translateX(8px);
   border-left: 3px solid #000;
-}
-
-.dark .sidebar-link:hover {
-  background: rgba(255, 255, 255, 0.02);
-  border-left: 3px solid #fff;
 }
 
 .sidebar-link-dot {
@@ -320,10 +246,6 @@
   background: #000;
   opacity: 0.6;
   transition: all 0.3s ease;
-}
-
-.dark .sidebar-link-dot {
-  background: #fff;
 }
 
 .sidebar-link:hover .sidebar-link-dot {
@@ -344,18 +266,10 @@
   opacity: 0.8;
 }
 
-.dark .sidebar-theme-toggle {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .sidebar-theme-toggle:hover {
   opacity: 1;
   background: rgba(0, 0, 0, 0.02);
   transform: translateX(8px);
-}
-
-.dark .sidebar-theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.02);
 }
 
 .sidebar-theme-label {
@@ -365,20 +279,12 @@
   letter-spacing: -0.01em;
 }
 
-.dark .sidebar-theme-label {
-  color: #fff;
-}
-
 .sidebar-theme-icon {
   width: 18px;
   height: 18px;
   opacity: 0.8;
   transition: all 0.3s ease;
   stroke: #000;
-}
-
-.dark .sidebar-theme-icon {
-  stroke: #fff;
 }
 
 .sidebar-theme-toggle:hover .sidebar-theme-icon {
@@ -474,14 +380,6 @@ html {
   outline: 2px solid rgba(0, 0, 0, 0.3);
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-.dark .nav-link:focus,
-.dark .sidebar-link:focus,
-.dark .nav-toggle:focus,
-.dark .theme-toggle:focus,
-.dark .sidebar-close:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Tipografía */

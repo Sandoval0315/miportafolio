@@ -30,15 +30,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateScrollDirection);
   }, []);
 
-  // Gestión del tema
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setDarkMode(savedTheme === 'dark');
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
   const toggleTheme = () => {
     const newTheme = darkMode ? 'light' : 'dark';
     setDarkMode(!darkMode);
@@ -248,23 +239,6 @@ export default function Navbar() {
                     {link.label}
                   </motion.a>
                 ))}
-
-                {/* Toggle de tema en sidebar */}
-                <motion.div
-                  className="sidebar-theme-toggle"
-                  variants={sidebarItemVariants}
-                  initial="closed"
-                  animate="open"
-                  custom={navLinks.length}
-                  onClick={toggleTheme}
-                  whileHover={{ x: 8 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="sidebar-link-dot" />
-                  <span className="sidebar-theme-label">
-                    {darkMode ? "Modo claro" : "Modo oscuro"}
-                  </span>
-                </motion.div>
               </nav>
             </motion.div>
           </>
