@@ -23,45 +23,46 @@ export default function Portafolio() {
     {
       id: 1,
       name: "PoliHome",
-      description: "Plataforma integral de gestión inmobiliaria que conecta propietarios, inquilinos y administradores con funcionalidades avanzadas de búsqueda, gestión de contratos y comunicación en tiempo real.",
+      description: "Sistema web para gestion de pedidos, productos y ventas para la marca Politorno Centroamerica ",
       shortDescription: "Sistema web de gestión inmobiliaria",
       images: [
         "/images/polihome.png",
-        "/images/polihome-dashboard.png",
-        "/images/polihome-mobile.png"
+        "/images/polihome3.png",
+        "/images/polihome4.png",
+        "/images/polihome2.png"
       ],
       technologies: ["MongoDB", "Express", "React", "Node.js"],
-      liveUrl: "https://polihome.com",
-      githubUrl: "https://github.com/usuario/polihome"
+      liveUrl: "https://poli-home-ph.vercel.app",
+      githubUrl: "https://github.com/grrdquinta/Polihome"
     },
     {
       id: 2,
-      name: "SS Imports",
-      description: "Sistema completo de gestión de importaciones y exportaciones con tracking en tiempo real, gestión de inventarios, facturación automatizada y análisis de métricas comerciales avanzadas.",
+      name: "En proceso",
+      description: "Landing page informativa para SS Imports, una empresa dedicada a facilitar importaciones y exportaciones con servicios personalizados y soluciones logísticas eficientes.",
       shortDescription: "Sistema de importaciones y exportaciones",
       images: [
         "/images/912shots_so.png",
-        "/images/ssimports-dashboard.png",
-        "/images/ssimports-analytics.png"
+        "/images/ss2.png",
+        "/images/ss3.png"
       ],
-      technologies: ["Astro", "React", "JavaScript"],
+      technologies: ["Astro", "React", "JavaScript", ],
       liveUrl: "https://ssimports.com",
       githubUrl: "https://github.com/usuario/ssimports"
     },
-   /* {
+    {
       id: 3,
       name: "HealthSyncs",
-      description: "Aplicación móvil integral para el seguimiento de hábitos saludables, rutinas de fitness personalizadas, análisis detallado del progreso y sistema de gamificación para motivar a los usuarios.",
-      shortDescription: "App fitness y seguimiento de hábitos",
+      description: "Aplicación móvil para gestión de salud personal que sincroniza datos de múltiples dispositivos y ofrece recordatorios de medicación, seguimiento de síntomas y análisis de tendencias.",
+      shortDescription: "Aplicación móvil de seguimiento de salud",
       images: [
-        "/images/ecotracker.jpg",
-        "/images/healthsyncs-profile.jpg",
-        "/images/healthsyncs-stats.jpg"
-      ],
-      technologies: ["Kotlin", "Java", "Oracle", "Android Studio", "Firebase", "Git"],
-      liveUrl: "https://healthsyncs.app",
-      githubUrl: "https://github.com/usuario/healthsyncs"
-    }*/
+        "/images/en_proceso.png",
+        "/images/en_proceso-dashboard.png",
+        "/images/en_proceso-mobile.png"
+          ],
+          technologies: ["Kotlin", "Java", "Oracle"],
+          liveUrl: "https://healthsyncs.app",
+          githubUrl: "https://github.com/usuario/healthsyncs" 
+    }
   ];
 
   // Variantes de animación para las cards
