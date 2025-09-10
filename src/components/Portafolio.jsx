@@ -55,9 +55,9 @@ export default function Portafolio() {
       description: "Aplicación móvil para gestión de salud personal que sincroniza datos de múltiples dispositivos y ofrece recordatorios de medicación, seguimiento de síntomas y análisis de tendencias.",
       shortDescription: "Aplicación móvil de seguimiento de salud",
       images: [
-        "/images/en_proceso.png",
-        "/images/en_proceso-dashboard.png",
-        "/images/en_proceso-mobile.png"
+        "/images/",
+        "/images/",
+        "/images/"
           ],
           technologies: ["Kotlin", "Java", "Oracle"],
           liveUrl: "https://healthsyncs.app",
