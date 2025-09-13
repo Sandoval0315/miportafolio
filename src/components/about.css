@@ -1,6 +1,5 @@
 /* About Section - Diseño Minimalista */
 .about {
-  background: linear-gradient(135deg, #fafafa 0%, #ffffff 50%, #f5f5f5 100%);
   padding: clamp(4rem, 12vh, 8rem) 0 0 0;
   min-height: 100vh;
   display: flex;
