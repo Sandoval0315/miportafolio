@@ -47,7 +47,7 @@ export default function Portafolio() {
       ],
       technologies: ["Astro", "React", "JavaScript", ],
       liveUrl: "https://ssimports.com",
-      githubUrl: "https://github.com/usuario/ssimports"
+      githubUrl: "https://github.com/Sandoval0315/ssimports"
     },
     {
       id: 3,

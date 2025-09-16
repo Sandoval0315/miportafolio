@@ -145,6 +145,7 @@ export default function Navbar() {
             animate="animate"
             whileHover={{ scale: 1.02 }}
           >
+            <img src="" alt="" />
             <span className="logo-text"><strong>Mi</strong>Portfolio</span>
           </motion.div>
 
