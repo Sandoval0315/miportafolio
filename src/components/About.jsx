@@ -101,12 +101,13 @@ export default function About() {
           >
             <p>
               Soy un <strong>desarrollador Fullstack</strong> especializado en crear 
-              experiencias digitales modernas y eficientes. Me apasiona escribir 
-              código limpio y construir aplicaciones que realmente importen.
+              experiencias visuales modernas y eficientes. Me apasiona diseñar
+              interfaces intuitivas y funcionales que mejoren la interacción del usuario.
             </p>
             <p>
               Con experiencia en desarrollo frontend y backend, me enfoco en 
-              soluciones escalables utilizando las tecnologías más actuales.
+              crear una experiencia de usuario fluida y atractiva,
+              prestando atención a cada detalle del diseño y la funcionalidad.
             </p>
           </motion.div>
 
@@ -122,9 +123,8 @@ export default function About() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Stack Tecnológico
+            Tecnologías aprendidas
           </motion.h3>
-          
           <div className="tech-categories">
             {techCategories.map((category, categoryIndex) => (
               <motion.div
@@ -164,6 +164,43 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Sección de Tiempo con CodeTime Badge */}
+      <div className="time-section">
+        <div className="tech-container">
+          <motion.h3 
+            className="tech-title"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            Tiempo de Desarrollo
+          </motion.h3>
+          
+          <motion.div 
+            className="codetime-container"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            <a 
+              href="https://codetime.dev" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="codetime-link"
+            >
+              <img 
+                alt="CodeTime Badge" 
+                src="https://shields.jannchie.com/endpoint?style=for-the-badge&color=222&url=https%3A%2F%2Fapi.codetime.dev%2Fv3%2Fusers%2Fshield%3Fuid%3D34517"
+                className="codetime-badge"
+              />
+            </a>
+            <p className="codetime-description">
+              Tiempo total dedicado al desarrollo y programación (desde septiembre 2025)
+             </p>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ export default function Hero() {
   const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
   
   // Roles que se van rotando
-  const roles = ["Frontend Developer", "UI/UX Designer", "Problem Solver"];
+  const roles = ["Desarrollador Front end", "Diseñador UI/UX", "Creativo Digital"];
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -214,7 +214,7 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Breve descripción */}
+        {/* Breve descripción
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -230,6 +230,7 @@ export default function Hero() {
         >
           Creo experiencias digitales elegantes y funcionales con atención al detalle
         </motion.p>
+         */}
 
         {/* Botones CTA */}
         <motion.div

@@ -24,7 +24,7 @@ export default function Portafolio() {
       id: 1,
       name: "PoliHome",
       description: "Sistema web para gestion de pedidos, productos y ventas para la marca Politorno Centroamerica ",
-      shortDescription: "Sistema web de gestión inmobiliaria",
+      shortDescription: "Sistema eccommerce de Politorno",
       images: [
         "/images/polihome.png",
         "/images/polihome3.png",
@@ -41,7 +41,7 @@ export default function Portafolio() {
       description: "Landing page informativa para SS Imports, una empresa dedicada a facilitar importaciones y exportaciones con servicios personalizados y soluciones logísticas eficientes.",
       shortDescription: "Sistema de importaciones y exportaciones",
       images: [
-        "/images/912shots_so.png",
+        "/images/ss1.png",
         "/images/ss2.png",
         "/images/ss3.png"
       ],
@@ -55,13 +55,13 @@ export default function Portafolio() {
       description: "Aplicación móvil para gestión de salud personal que sincroniza datos de múltiples dispositivos y ofrece recordatorios de medicación, seguimiento de síntomas y análisis de tendencias.",
       shortDescription: "Aplicación móvil de seguimiento de salud",
       images: [
-        "/images/",
-        "/images/",
-        "/images/"
+        "/images/heal1.png",
+        "/images/heal2.png",
+        "/images/heal3.png"
           ],
           technologies: ["Kotlin", "Java", "Oracle"],
-          liveUrl: "https://healthsyncs.app",
-          githubUrl: "https://github.com/usuario/healthsyncs" 
+          liveUrl: "https://github.com/Sandoval0315/EXPO.git",
+          githubUrl: "https://github.com/Sandoval0315/EXPO.git" 
     }
   ];
 
@@ -194,7 +194,7 @@ export default function Portafolio() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.6, type: "spring" }}
             >
-              Selección de proyectos que demuestran experiencia en desarrollo full-stack
+              Selección de proyectos que demuestran experiencia en desarrollo web y móvil,
             </motion.p>
           </motion.div>
 
