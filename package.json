@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@emailjs/browser": "^4.4.1",
     "astro": "^5.13.5",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",

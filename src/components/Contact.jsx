@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import './contact.css';
 
 export default function Contact() {
@@ -19,7 +20,15 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [focusedField, setFocusedField] = useState(null);
+
+  // CONFIGURACIÓN DE EMAILJS CON TUS DATOS
+  const EMAILJS_CONFIG = {
+    SERVICE_ID: 'service_eergcby',
+    TEMPLATE_ID: 'template_wlb35go', 
+    PUBLIC_KEY: 'Haxeoh-WJZ1_lFwvQ'
+  };
 
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const headerInView = useInView(headerRef, { once: true, amount: 0.6 });
@@ -51,6 +60,11 @@ export default function Contact() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1.05]);
 
+  // INICIALIZAR EMAILJS
+  useEffect(() => {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  }, []);
+
   // Manejar cambios en formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -60,18 +74,34 @@ export default function Contact() {
     }));
   };
 
-  // Manejar envío del formulario
+  // MANEJAR ENVÍO DEL FORMULARIO CON EMAILJS
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(false);
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        },
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+      
+      console.log('Email enviado exitosamente:', result);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setSubmitSuccess(true);
-      setTimeout(() => setSubmitSuccess(false), 3000);
+      setTimeout(() => setSubmitSuccess(false), 5000);
+      
     } catch (error) {
-      console.error('Error enviando formulario:', error);
+      console.error('Error enviando email:', error);
+      setSubmitError(true);
+      setTimeout(() => setSubmitError(false), 5000);
     } finally {
       setIsSubmitting(false);
     }
@@ -87,7 +117,7 @@ export default function Contact() {
         </svg>
       ),
       title: "Email",
-      info: "hello@nelson.dev"
+      info: "sandovalnelson1503@gmail.com"
     },
     {
       icon: (
@@ -96,7 +126,7 @@ export default function Contact() {
         </svg>
       ),
       title: "Teléfono",
-      info: "+503 1234-5678"
+      info: "+503 7734-8509"
     },
     {
       icon: (
@@ -301,9 +331,7 @@ export default function Contact() {
             className="contact-description"
             variants={itemVariants}
           >
-            ¿Tienes una idea que quieres convertir en realidad digital? 
-            Me especializo en crear experiencias web únicas y funcionales. 
-            Conversemos sobre tu próximo proyecto.
+            Contactame para cualquier consulta, proyecto o colaboración. ¡Estoy aquí para ayudarte!
           </motion.p>
         </motion.div>
 
@@ -353,6 +381,30 @@ export default function Contact() {
                 </motion.div>
               )}
 
+              {/* Mensaje de error */}
+              {submitError && (
+                <motion.div
+                  className="error-message"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 10
+                  }}
+                >
+                  <div className="error-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="15" y1="9" x2="9" y2="15"/>
+                      <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                  </div>
+                  <span>Error al enviar el mensaje. Inténtalo de nuevo.</span>
+                </motion.div>
+              )}
+
               <div className="form-row">
                 <motion.div
                   className="form-group"
@@ -361,7 +413,7 @@ export default function Contact() {
                   initial="hidden"
                   animate={formInView ? "visible" : "hidden"}
                 >
-                  <label className="form-label">Nombre completo</label>
+                  <label className="form-label">Nombre </label>
                   <motion.input
                     type="text"
                     name="name"
