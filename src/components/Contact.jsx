@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import './contact.css';
+import { line } from 'framer-motion/client';
 
 export default function Contact() {
   const sectionRef = useRef(null);
@@ -107,6 +108,11 @@ export default function Contact() {
     }
   };
 
+  // Función para manejar clicks en tarjetas de contacto
+  const handleContactCardClick = (link) => {
+    window.open(link, '_blank');
+  };
+
   // Información de contacto
   const contactInfo = [
     {
@@ -117,7 +123,8 @@ export default function Contact() {
         </svg>
       ),
       title: "Email",
-      info: "sandovalnelson1503@gmail.com"
+      info: "sandovalnelson1503@gmail.com",
+      link: "mailto:sandovalnelson1503@gmail.com"
     },
     {
       icon: (
@@ -126,7 +133,8 @@ export default function Contact() {
         </svg>
       ),
       title: "Teléfono",
-      info: "+503 7734-8509"
+      info: "+503 7734-8509",
+      link: "https://wa.me/50377348509"
     },
     {
       icon: (
@@ -136,7 +144,19 @@ export default function Contact() {
         </svg>
       ),
       title: "Ubicación",
-      info: "San Salvador, El Salvador"
+      info: "San Salvador, El Salvador",
+      link: "https://maps.google.com/?q=San+Salvador,+El+Salvador"
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      ),
+      title: "Instagram",
+      info: "@sandoval0315",
+      link: "https://www.instagram.com/sandoval0315/"
     }
   ];
 
@@ -314,7 +334,6 @@ export default function Contact() {
             variants={itemVariants}
           >
             <span className="contact-label">Contacto</span>
-            <div className="contact-label-line" />
           </motion.div>
           
           <motion.h2
@@ -322,9 +341,9 @@ export default function Contact() {
             className="contact-title"
             variants={titleVariants}
           >
-            Construyamos algo{" "}
-            <span className="title-highlight">extraordinario</span>{" "}
-            juntos
+            Contactate directamente{" "}
+            <span className="title-highlight">para cualquier</span>{" "}
+            duda
           </motion.h2>
           
           <motion.p
@@ -559,7 +578,7 @@ export default function Contact() {
               {contactInfo.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="info-card-compact"
+                  className="info-card-compact clickable-card"
                   initial={{ opacity: 0, y: 20 }}
                   animate={infoInView ? { opacity: 1, y: 0 } : {}}
                   transition={{
@@ -569,16 +588,22 @@ export default function Contact() {
                     stiffness: 100
                   }}
                   whileHover={{
-                    y: -4,
-                    scale: 1.02,
+                    y: -6,
+                    scale: 1.03,
                     transition: { duration: 0.2 }
                   }}
+                  whileTap={{ 
+                    scale: 0.98,
+                    transition: { duration: 0.1 }
+                  }}
+                  onClick={() => handleContactCardClick(item.link)}
+                  style={{ cursor: 'pointer' }}
                 >
                   <motion.div
                     className="info-icon-compact"
                     whileHover={{
-                      scale: 1.1,
-                      rotate: 5,
+                      scale: 1.15,
+                      rotate: 8,
                       transition: { duration: 0.3 }
                     }}
                   >
@@ -588,6 +613,19 @@ export default function Contact() {
                     <h4>{item.title}</h4>
                     <p>{item.info}</p>
                   </div>
+                  
+                  {/* Indicador visual de que es clickeable */}
+                  <motion.div 
+                    className="click-indicator"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M7 17L17 7"/>
+                      <path d="M7 7h10v10"/>
+                    </svg>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
