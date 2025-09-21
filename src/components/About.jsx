@@ -252,7 +252,7 @@ export default function About() {
         >
           <div className="image-container">
             <img 
-              src="/images/profile.jpg" 
+              src="/images/me2.jpg" 
               alt="Nelson - Desarrollador Fullstack" 
               className="about-img"
               onError={(e) => {
