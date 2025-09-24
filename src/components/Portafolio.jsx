@@ -46,7 +46,7 @@ export default function Portafolio() {
         "/images/ss3.png"
       ],
       technologies: ["Astro", "React", "JavaScript", ],
-      liveUrl: "https://ssimports.com",
+      liveUrl: "https://ssimportss.vercel.app",
       githubUrl: "https://github.com/Sandoval0315/ssimports"
     },
     {
