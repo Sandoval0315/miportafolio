@@ -463,7 +463,7 @@ export default function About() {
               />
             </a>
             <p className="codetime-description">
-              Tiempo total dedicado al desarrollo y programación
+              Tiempo total dedicado al desarrollo y programación (es mas pero empeze a usar eso hace poco)
             </p>
           </motion.div>
         </div>
