@@ -8,12 +8,14 @@ export default function About() {
   const contentRef = useRef(null);
   const techSectionRef = useRef(null);
   const timeSectionRef = useRef(null);
+  const wakatimeSectionRef = useRef(null);
   
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const imageInView = useInView(imageRef, { once: true, amount: 0.6 });
   const contentInView = useInView(contentRef, { once: true, amount: 0.5 });
   const techInView = useInView(techSectionRef, { once: true, amount: 0.3 });
   const timeInView = useInView(timeSectionRef, { once: true, amount: 0.4 });
+  const wakatimeInView = useInView(wakatimeSectionRef, { once: true, amount: 0.4 });
 
   // Scroll progress para efectos parallax
   const { scrollYProgress } = useScroll({
@@ -464,6 +466,82 @@ export default function About() {
             </a>
             <p className="codetime-description">
               Tiempo total dedicado al desarrollo y programación (es mas pero empeze a usar eso hace poco)
+            </p>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Sección de Wakatime con animaciones sofisticadas */}
+      <motion.div 
+        className="wakatime-section"
+        ref={wakatimeSectionRef}
+        initial={{ opacity: 0, y: 120, scale: 0.9 }}
+        animate={wakatimeInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ 
+          duration: 1, 
+          delay: 0.2,
+          type: "spring",
+          stiffness: 80,
+          damping: 15
+        }}
+      >
+        <div className="tech-container">
+          <motion.h3 
+            className="tech-title"
+            initial={{ opacity: 0, y: 60, rotateX: 45 }}
+            animate={wakatimeInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Actividad en Wakatime
+          </motion.h3>
+          
+          <motion.div 
+            className="wakatime-container"
+            initial={{ 
+              opacity: 0, 
+              y: 80, 
+              scale: 0.8,
+              rotateY: 30
+            }}
+            animate={wakatimeInView ? { 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+              rotateY: 0
+            } : {}}
+            transition={{ 
+              duration: 1.2, 
+              delay: 0.6,
+              type: "spring",
+              stiffness: 70,
+              damping: 12
+            }}
+            whileHover={{
+              scale: 1.08,
+              y: -12,
+              rotateY: -5,
+              transition: { duration: 0.4 }
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <a 
+              href="https://wakatime.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="wakatime-link"
+            >
+              <motion.img 
+                alt="Wakatime Badge" 
+                src="https://wakatime.com/badge/user/cf255026-0033-42d2-a693-81d9535e3df8.svg"
+                className="wakatime-badge"
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
+              />
+            </a>
+            <p className="wakatime-description">
+              Mi actividad de codificación rastreada en tiempo real
             </p>
           </motion.div>
         </div>
