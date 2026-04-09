@@ -144,32 +144,30 @@ export default function About() {
   const techCategories = [
     {
       title: "Frontend",
-      icon: "🎨",
+      icon: "",
       technologies: [
         { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
         { name: "Astro", logo: "https://astro.build/assets/press/astro-icon-light-gradient.svg" },
         { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
         { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
         { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" }
+        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+        {name: "Angular", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"}  ,
       ]
     },
     {
       title: "Backend",
-      icon: "⚙️",
+      icon: "",
       technologies: [
         { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
         { name: "C#", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
-        { name: "Kotlin", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" },
         { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
         { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-        { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-
       ]
     },
     {
       title: "Base de Datos",
-      icon: "🗄️",
+      icon: "",
       technologies: [
         { name: "Oracle", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
         { name: "SQL Server", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
@@ -179,12 +177,34 @@ export default function About() {
       ]
     },
     {
-      title: "Herramientas",
-      icon: "🛠️",
+      title: "Herramientas, Contenedores y Entornos",
+      icon: "",
       technologies: [
         { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
         { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-        { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" }
+        { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
+        { name: "Mamp & Xampp", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mamp/mamp-original.svg" },
+      ]
+    },
+    {
+      title: "Desarrollo Móvil",
+      icon: "",
+      technologies: [
+        { name: "Flutter", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+        { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "Swift", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" },
+        { name: "Kotlin", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" },
+      ]
+    },
+    {
+      title: "En proceso de Aprendizaje",
+      icon: "",
+      technologies: [
+        {name: "Php / Laravel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"},
+        {name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"},
+        {name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"},
+        {name: "Prisma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"},
+        {name: "Spring Boot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"},
       ]
     }
   ];
@@ -316,6 +336,7 @@ export default function About() {
 
       {/* Stack Tecnológico con animaciones avanzadas */}
       <motion.div 
+        id="tech-section"
         className="tech-section"
         ref={techSectionRef}
         style={{ y: yTechParallax }}
@@ -341,7 +362,7 @@ export default function About() {
             {techCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
-                className="tech-category"
+                className={`tech-category ${category.title === "En proceso de Aprendizaje" ? "learning-category" : ""}`}
                 custom={categoryIndex}
                 variants={techCardVariants}
                 whileHover={{
@@ -416,7 +437,7 @@ export default function About() {
             animate={timeInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Tiempo de Desarrollo
+            Tiempo de Desarrollo (Marzo - Abril 2026)
           </motion.h3>
           
           <motion.div 
@@ -465,7 +486,7 @@ export default function About() {
               />
             </a>
             <p className="codetime-description">
-              Tiempo total dedicado al desarrollo y programación (es mas pero empeze a usar eso hace poco)
+              Tiempo total dedicado al desarrollo y programación
             </p>
           </motion.div>
         </div>

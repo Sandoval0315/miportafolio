@@ -13,7 +13,7 @@ export default function Hero() {
   const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
   
   // Roles que se van rotando
-  const roles = ["Desarrollador Front end", "Diseñador UI/UX", "Creativo Digital"];
+  const roles = ["Desarrollador Frontend & Backend Jr.", "Diseñador UI/UX", "Creativo Digital e Innovador"];
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -165,7 +165,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              Nelson
+              Sandoval
             </motion.span>
           </motion.h1>
         </motion.div>
@@ -245,7 +245,7 @@ export default function Hero() {
           }}
         >
           <motion.a
-            href="#portafolio"
+            href="#tech-section" 
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             style={{
@@ -264,7 +264,7 @@ export default function Hero() {
               cursor: 'pointer',
             }}
           >
-            Ver mi trabajo
+            Conocimientos
             <motion.span
               whileHover={{ x: 3 }}
               transition={{ duration: 0.2 }}

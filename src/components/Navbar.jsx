@@ -111,6 +111,7 @@ export default function Navbar() {
     { href: "#inicio", label: "Inicio" },
     { href: "#sobre-mi", label: "Sobre mí" },
     { href: "#portafolio", label: "Portafolio" },
+    { href: "tech-section", label: "Tecnologías" },
     { href: "#contacto", label: "Contacto" }
   ];
 
