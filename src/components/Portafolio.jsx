@@ -22,7 +22,7 @@ export default function Portafolio() {
   const projects = [
     {
       id: 1,
-      name: "PoliHome",
+      name: "Proyecto para Politorno Centroamerica",
       description: "Sistema web para gestion de pedidos, productos y ventas para la marca Politorno Centroamerica ",
       shortDescription: "Sistema eccommerce de Politorno",
       images: [
@@ -34,21 +34,24 @@ export default function Portafolio() {
       technologies: ["MongoDB", "Express", "React", "Node.js"],
       liveUrl: "https://poli-home-ph.vercel.app",
       githubUrl: "https://github.com/grrdquinta/Polihome"
-    },
-    {
+    },{ 
       id: 2,
-      name: "En proceso",
-      description: "Landing page informativa para SS Imports, una empresa dedicada a facilitar importaciones y exportaciones con servicios personalizados y soluciones logísticas eficientes.",
-      shortDescription: "Sistema de importaciones y exportaciones",
+      name: "BéRRY SHOP",
+      description: "Tienda e-commerce de productos de ropa y accesorios de moda, con un diseño moderno y funcional que permite a los usuarios navegar fácilmente por las categorías, agregar productos al carrito y realizar compras seguras.",
+      shortDescription: "Tienda e-commerce de moda",
       images: [
-        "/images/ss1.png",
-        "/images/ss2.png",
-        "/images/ss3.png"
-      ],
-      technologies: ["Astro", "React", "JavaScript", ],
-      liveUrl: "https://ssimportss.vercel.app",
-      githubUrl: "https://github.com/Sandoval0315/ssimports"
-    },
+        "/images/berry1.png",
+        "/images/berry2.png",
+        "/images/berry3.png",
+        "/images/berry4.png",
+        "/images/berry5.png",
+        "/images/berry6.png"
+          ],
+          technologies: ["Php laravel", "MySQL"],
+          liveUrl: "",
+          githubUrl: "https://github.com/Sandoval0315/tienda1phplaravel"
+
+      },
     {
       id: 3,
       name: "HealthSyncs",
@@ -62,7 +65,35 @@ export default function Portafolio() {
           technologies: ["Kotlin", "Java", "Oracle"],
           liveUrl: "https://github.com/Sandoval0315/EXPO.git",
           githubUrl: "https://github.com/Sandoval0315/EXPO.git" 
-    }
+    },
+    {
+      id: 4,
+      name: "Landing Page de SS Imports",
+      description: "Landing page informativa para SS Imports, una empresa dedicada a facilitar importaciones y exportaciones con servicios personalizados y soluciones logísticas eficientes.",
+      shortDescription: "Sistema de importaciones y exportaciones",
+      images: [
+        "/images/ss1.png",
+        "/images/ss2.png",
+        "/images/ss3.png"
+      ],
+      technologies: ["Astro", "React", "JavaScript", ],
+      liveUrl: "https://ssimportss.vercel.app",
+      githubUrl: "https://github.com/Sandoval0315/ssimports"
+    },
+      {
+        id: 5,
+        name: "Cafuki Shop",
+        description: "Desarrollada para entornos IOS es un Sitio web para una cafetería local que muestra el menú, ubicación, horarios y permite a los clientes realizar pedidos en línea para recoger o entrega a domicilio.",
+        shortDescription: "App movil para cafetería local",
+        images: [
+          "/images/cafuki1.png",
+          "/images/cafuki2.png",
+          "/images/cafuki3.png"
+        ],
+        technologies: ["Swift", "iOS", "Firebase"],
+        liveUrl: "https://github.com/Sandoval0315/cafukistore",
+        githubUrl: "https://github.com/Sandoval0315/cafukistore"
+      }
   ];
 
   // Variantes de animación para las cards
