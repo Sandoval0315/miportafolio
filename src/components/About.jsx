@@ -437,7 +437,7 @@ export default function About() {
             animate={timeInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Tiempo de Desarrollo (Marzo - Abril 2026)
+            Tiempo de Desarrollo (2026)
           </motion.h3>
           
           <motion.div 
