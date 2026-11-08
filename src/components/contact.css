@@ -456,6 +456,8 @@
 
 .info-content-compact {
   flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .info-content-compact h4 {

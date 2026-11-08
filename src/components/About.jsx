@@ -13,7 +13,8 @@ export default function About() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const imageInView = useInView(imageRef, { once: true, amount: 0.6 });
   const contentInView = useInView(contentRef, { once: true, amount: 0.5 });
-  const techInView = useInView(techSectionRef, { once: true, amount: 0.3 });
+  // La sección crece al apilar las tarjetas en móvil; basta con que empiece a entrar.
+  const techInView = useInView(techSectionRef, { once: true, amount: "some" });
   const timeInView = useInView(timeSectionRef, { once: true, amount: 0.4 });
   const wakatimeInView = useInView(wakatimeSectionRef, { once: true, amount: 0.4 });
 
@@ -24,11 +25,6 @@ export default function About() {
   });
 
   // Efectos parallax con spring para suavidad
-  const yBackground = useSpring(useTransform(scrollYProgress, [0, 1], [0, -200]), {
-    stiffness: 100,
-    damping: 30
-  });
-
   const yImageParallax = useSpring(useTransform(scrollYProgress, [0, 1], [50, -100]), {
     stiffness: 120,
     damping: 25
@@ -43,8 +39,6 @@ export default function About() {
     stiffness: 90,
     damping: 30
   });
-
-  const opacityFade = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.7, 1, 1, 0.7]);
 
   // Variantes de animación avanzadas
   const containerVariants = {
@@ -146,34 +140,45 @@ export default function About() {
       title: "Frontend",
       icon: "",
       technologies: [
-        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-        { name: "Astro", logo: "https://astro.build/assets/press/astro-icon-light-gradient.svg" },
-        { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-        { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
         { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
         { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-        {name: "Angular", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"}  ,
       ]
     },
     {
       title: "Backend",
       icon: "",
       technologies: [
+        { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
         { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-        { name: "C#", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
         { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      ]
+    },
+    {
+      title: "Frameworks y librerías Frontend",
+      icon: "",
+      technologies: [
+        { name: "Astro", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg" },
+        { name: "Angular", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" },
+        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      ]
+    },
+    {
+      title: "Frameworks Backend",
+      icon: "",
+      technologies: [
+        { name: "Laravel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+        { name: "Spring Boot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
         { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
       ]
     },
     {
-      title: "Base de Datos",
+      title: "Bases de datos",
       icon: "",
       technologies: [
-        { name: "Oracle", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
-        { name: "SQL Server", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
-        { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
+        { name: "Oracle Database", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
+        { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
         { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-        { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
+        { name: "SQL Server", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
       ]
     },
     {
@@ -181,86 +186,24 @@ export default function About() {
       icon: "",
       technologies: [
         { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-        { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+        { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+        { name: "WebLogic" },
+        { name: "Jaspersoft" },
         { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
         { name: "Mamp & Xampp", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mamp/mamp-original.svg" },
-      ]
-    },
-    {
-      title: "Desarrollo Móvil",
-      icon: "",
-      technologies: [
-        { name: "Flutter", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
-        { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-        { name: "Swift", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" },
-        { name: "Kotlin", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" },
       ]
     },
     {
       title: "En proceso de Aprendizaje",
       icon: "",
       technologies: [
-        {name: "Php / Laravel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"},
-        {name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"},
-        {name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"},
-        {name: "Prisma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"},
-        {name: "Spring Boot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"},
+        { name: ".NET", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" },
       ]
     }
   ];
 
   return (
     <section className="about" id="sobre-mi" ref={sectionRef}>
-      {/* Background con efectos de flotación */}
-      <motion.div
-        className="about-background"
-        style={{ y: yBackground, opacity: opacityFade }}
-      >
-        <motion.div
-          className="about-geometric about-geometric-1"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.2, 0.8, 1],
-            x: [-10, 10, -10],
-            y: [-15, 15, -15]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.div
-          className="about-geometric about-geometric-2"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 30, -20, 0],
-            y: [0, -25, 15, 0]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.div
-          className="about-geometric about-geometric-3"
-          animate={{
-            rotate: [0, -360],
-            scale: [0.8, 1.1, 0.9, 1.2, 0.8],
-            x: [20, -10, 25, -15, 20],
-            y: [10, -20, 30, -10, 10]
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </motion.div>
-
       <div className="about-container">
         
         {/* Imagen Profile con animaciones avanzadas */}
@@ -280,7 +223,7 @@ export default function About() {
           <div className="image-container">
             <img 
               src="/images/me2.jpg" 
-              alt="Nelson - Desarrollador Fullstack" 
+              alt="Nelson Sandoval - Desarrollador Web Jr."
               className="about-img"
               onError={(e) => {
                 e.target.src = "https://via.placeholder.com/320x320/cccccc/666666?text=Profile";
@@ -311,7 +254,7 @@ export default function About() {
               className="about-title"
               variants={itemVariants}
             >
-              Desarrollador Full-Stack
+              Desarrollador Web Jr.
             </motion.h2>
           </div>
 
@@ -321,13 +264,17 @@ export default function About() {
             variants={itemVariants}
           >
             <p>
-              Soy un <strong>desarrollador Fullstack</strong> especializado en crear 
-              experiencias digitales modernas y eficientes. Me apasiona escribir 
-              código limpio y construir aplicaciones que realmente importen.
+              Soy <strong>programador Jr.</strong> con experiencia en desarrollo
+              web, tanto en interfaces frontend como en lógica backend y bases
+              de datos. Me interesa
+              entender cada necesidad y convertirla en una solución clara,
+              funcional y fácil de mantener.
             </p>
             <p>
-              Con experiencia en desarrollo frontend y backend, me enfoco en 
-              soluciones escalables utilizando las tecnologías más actuales.
+              Combino experiencia profesional con proyectos propios para seguir
+              ampliando mis conocimientos. Disfruto resolver problemas, aprender
+              nuevas herramientas y elegir las tecnologías según lo que necesita
+              cada proyecto.
             </p>
           </motion.div>
 
@@ -394,15 +341,15 @@ export default function About() {
                       whileTap={{ scale: 0.95 }}
                     >
                       <div className="tech-logo">
-                        <img 
+                        {tech.logo && <img
                           src={tech.logo} 
                           alt={tech.name}
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'flex';
                           }}
-                        />
-                        <div className="tech-fallback" style={{ display: 'none' }}>
+                        />}
+                        <div className="tech-fallback" aria-hidden="true" style={{ display: tech.logo ? 'none' : 'flex' }}>
                           {tech.name.charAt(0)}
                         </div>
                       </div>

@@ -1,0 +1,219 @@
+---
+const technologies = [
+  "Java", "Spring Boot", "Thymeleaf", "Oracle SQL",
+  "Jaspersoft", "WebLogic", "Docker",
+];
+---
+
+<section id="experiencia" class="experience" aria-labelledby="experience-title">
+  <canvas class="experience-confetti" aria-hidden="true" hidden></canvas>
+  <div class="experience-container">
+    <header>
+      <p class="eyebrow">Trayectoria profesional</p>
+      <h2 id="experience-title">Experiencia laboral</h2>
+      <p class="intro">Desarrollo de aplicaciones web y reportes para distintas áreas empresariales.</p>
+    </header>
+
+    <article class="experience-card" aria-labelledby="experience-role">
+      <div class="experience-heading">
+        <div>
+          <p class="company">INCO El Salvador</p>
+          <h3 id="experience-role">Programador Analista Jr.</h3>
+          <p class="role-focus">Desarrollo web</p>
+        </div>
+        <p class="period"><time datetime="2026-04">Abril</time> – <time datetime="2026-11">noviembre de 2026</time></p>
+      </div>
+
+      <ul class="responsibilities">
+        <li>Desarrollo de aplicaciones web para distintas áreas de las empresas con Java, Spring Boot y Thymeleaf.</li>
+        <li>Trabajo con bases de datos Oracle y consultas SQL para las aplicaciones y sus reportes.</li>
+        <li>Generación de reportes con Jaspersoft para las necesidades de las áreas empresariales.</li>
+        <li>Uso de WebLogic como servidor de aplicaciones y de Docker en el entorno de trabajo.</li>
+      </ul>
+
+      <h4>Tecnologías utilizadas</h4>
+      <ul class="technology-list" aria-label="Tecnologías utilizadas en INCO El Salvador">
+        {technologies.map((technology) => <li>{technology}</li>)}
+      </ul>
+    </article>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('#experiencia');
+  const card = section?.querySelector<HTMLElement>('.experience-card');
+  const canvas = section?.querySelector<HTMLCanvasElement>('.experience-confetti');
+  const context = canvas?.getContext('2d');
+
+  if (section && card && canvas && context) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+    let entrance: Animation | undefined;
+
+    const stopCelebration = () => {
+      cancelAnimationFrame(frame);
+      entrance?.cancel();
+      canvas.hidden = true;
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    };
+
+    const celebrate = () => {
+      if (reducedMotion.matches || section.dataset.celebrated) return;
+      section.dataset.celebrated = 'true';
+      const width = section.clientWidth;
+      const height = section.clientHeight;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      canvas.hidden = false;
+
+      entrance = card.animate([
+        { transform: 'translateY(24px)', opacity: 0.7 },
+        { transform: 'translateY(0)', opacity: 1 },
+      ], { duration: 650, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
+
+      const colors = ['#d8ad4d', '#6b9bd2', '#77bfa4', '#c98da8', '#a49acb'];
+      const originY = card.offsetTop + Math.min(card.offsetHeight * 0.45, 240);
+      const particles = Array.from({ length: width < 600 ? 48 : 80 }, (_, index) => {
+        const fromLeft = index % 2 === 0;
+        return {
+          x: width * (fromLeft ? 0.12 : 0.88),
+          y: originY,
+          velocityX: (fromLeft ? 1 : -1) * (40 + Math.random() * Math.min(width * 0.3, 260)),
+          velocityY: -180 - Math.random() * 240,
+          rotation: Math.random() * Math.PI,
+          spin: (Math.random() - 0.5) * 12,
+          size: 5 + Math.random() * 5,
+          color: colors[index % colors.length],
+        };
+      });
+      const start = performance.now();
+      const draw = (now: number) => {
+        const elapsed = (now - start) / 1000;
+        context.clearRect(0, 0, width, height);
+        if (elapsed > 2.6 || reducedMotion.matches) {
+          stopCelebration();
+          return;
+        }
+        context.globalAlpha = Math.min(1, (2.6 - elapsed) / 0.7);
+        for (const particle of particles) {
+          context.save();
+          context.translate(
+            particle.x + particle.velocityX * elapsed,
+            particle.y + particle.velocityY * elapsed + 180 * elapsed * elapsed,
+          );
+          context.rotate(particle.rotation + particle.spin * elapsed);
+          context.fillStyle = particle.color;
+          context.fillRect(-particle.size / 2, -particle.size / 4, particle.size, particle.size / 2);
+          context.restore();
+        }
+        frame = requestAnimationFrame(draw);
+      };
+      frame = requestAnimationFrame(draw);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        celebrate();
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+    observer.observe(card);
+    reducedMotion.addEventListener('change', stopCelebration);
+    window.addEventListener('resize', stopCelebration);
+    window.addEventListener('pagehide', () => {
+      stopCelebration();
+      observer.disconnect();
+      reducedMotion.removeEventListener('change', stopCelebration);
+      window.removeEventListener('resize', stopCelebration);
+    }, { once: true });
+  }
+</script>
+
+<style>
+  .experience {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    scroll-margin-top: 6rem;
+    background: #fafafa;
+    color: #171717;
+    font-family: 'Lexend', sans-serif;
+  }
+  .experience-confetti {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .experience-confetti { display: none; }
+  }
+  .experience-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 3rem);
+  }
+  .eyebrow {
+    margin-bottom: 1rem;
+    color: #666;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .intro {
+    max-width: 650px;
+    margin-top: 1.25rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  .experience-card {
+    margin-top: 2.5rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid #e3e3e3;
+    border-radius: 24px;
+    background: #fff;
+  }
+  .experience-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .company { font-weight: 600; margin-bottom: 0.75rem; }
+  h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; }
+  .role-focus { margin-top: 0.5rem; color: #666; }
+  .period { color: #555; font-size: 0.9rem; line-height: 1.8; }
+  .responsibilities {
+    margin: 2rem 0;
+    padding-left: 1.25rem;
+    color: #444;
+    line-height: 1.85;
+  }
+  .responsibilities li + li { margin-top: 0.75rem; }
+  h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+  .technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    padding: 0;
+  }
+  .technology-list li {
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: #f2f2f2;
+    color: #333;
+    font-size: 0.8rem;
+  }
+</style>

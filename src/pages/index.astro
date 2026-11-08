@@ -2,6 +2,8 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Navbar from "../components/Navbar.jsx";
 import Hero from "../components/Hero.jsx";
+import Experience from "../components/Experience.astro";
+import Education from "../components/Education.astro";
 import About from "../components/About.jsx";
 import Portfolio from "../components/Portafolio.jsx";
 import Services from "../components/Services.jsx";
@@ -11,6 +13,8 @@ import Footer from "../components/Footer.jsx";
 <MainLayout>
   <Navbar client:load />
   <Hero client:load />
+  <Experience />
+  <Education />
   <About client:load />
   <Portfolio client:load />
   <Services client:load />

@@ -1,6 +1,6 @@
 /* Navbar moderno y minimalista */
 .navbar {
-  width: 100vw;
+  width: 100%;
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -31,7 +31,8 @@
   margin: 0;
   padding: 0 clamp(1.5rem, 5vw, 3rem);
   display: grid;
-  grid-template-columns: 2fr 1fr auto auto;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2rem;
   align-items: center;
   height: clamp(64px, 8vh, 76px);
   position: relative;
@@ -58,14 +59,14 @@
 /* Navegación a la izquierda */
 .nav-center {
   display: flex;
-  justify-content: flex-start;
-  justify-self: start;
-  margin-left: clamp(3rem, 8vw, 8rem);
+  justify-content: flex-end;
+  justify-self: end;
+  min-width: 0;
 }
 
 .nav-links {
   display: flex;
-  gap: clamp(2rem, 4vw, 3rem);
+  gap: clamp(1rem, 2.3vw, 2.5rem);
   align-items: center;
 }
 
@@ -85,6 +86,7 @@
   letter-spacing: -0.01em;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   padding: 0.8rem 0;
+  white-space: nowrap;
   opacity: 0.7;
   position: relative;
 }
@@ -160,6 +162,9 @@
   left: 0;
   width: 280px;
   height: 100vh;
+  height: 100dvh;
+  max-width: 100%;
+  overflow-y: auto;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
@@ -296,7 +301,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(2px);
@@ -304,7 +309,7 @@
 }
 
 /* Media queries */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-container {
     grid-template-columns: 1fr auto;
     padding: 0 1.5rem;
@@ -323,7 +328,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .mobile-sidebar,
   .sidebar-overlay {
     display: none !important;
@@ -345,7 +350,6 @@
   }
 
   .nav-toggle {
-    margin-right: 28px;
     width: 36px;
     height: 36px;
   }

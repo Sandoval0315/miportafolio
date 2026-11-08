@@ -13,7 +13,7 @@ export default function Hero() {
   const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
   
   // Roles que se van rotando
-  const roles = ["Desarrollador Frontend & Backend Jr.", "Diseñador UI/UX", "Creativo Digital e Innovador"];
+  const roles = ["Programador Jr.", "Desarrollador Frontend Jr.", "Desarrollador Backend Jr."];
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -41,10 +41,12 @@ export default function Hero() {
 
   return (
     <section 
+      id="inicio"
       className="hero-section" 
       ref={heroRef}
       style={{
-        height: '100vh',
+        minHeight: '100svh',
+        padding: '7rem 0',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
@@ -214,23 +216,23 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Breve descripción
+        {/* Resumen profesional */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           style={{
             fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-            color: '#888',
+            color: '#666',
             maxWidth: '500px',
             margin: '0 auto 3rem',
             lineHeight: '1.6',
             fontWeight: '300',
           }}
         >
-          Creo experiencias digitales elegantes y funcionales con atención al detalle
+          Transformo ideas en aplicaciones útiles, con atención a la experiencia
+          de usuario y a los detalles que hacen que todo funcione.
         </motion.p>
-         */}
 
         {/* Botones CTA */}
         <motion.div
@@ -245,7 +247,7 @@ export default function Hero() {
           }}
         >
           <motion.a
-            href="#tech-section" 
+            href="#experiencia"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             style={{
@@ -264,7 +266,7 @@ export default function Hero() {
               cursor: 'pointer',
             }}
           >
-            Conocimientos
+            Ver experiencia
             <motion.span
               whileHover={{ x: 3 }}
               transition={{ duration: 0.2 }}
@@ -337,7 +339,7 @@ export default function Hero() {
         />
       </motion.div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes patternMove {
           0% { transform: translate(0, 0); }
           100% { transform: translate(30px, 30px); }

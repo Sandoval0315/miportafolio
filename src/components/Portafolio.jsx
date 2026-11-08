@@ -4,7 +4,7 @@ import './portafolio.css';
 
 export default function Portafolio() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: "some" });
   const [selectedProject, setSelectedProject] = useState(null);
   
   const { scrollYProgress } = useScroll({
@@ -32,26 +32,9 @@ export default function Portafolio() {
         "/images/polihome2.png"
       ],
       technologies: ["MongoDB", "Express", "React", "Node.js"],
-      liveUrl: "https://poli-home-ph.vercel.app",
+      liveUrl: "https://poli-home.com/",
       githubUrl: "https://github.com/grrdquinta/Polihome"
-    },{ 
-      id: 2,
-      name: "BéRRY SHOP",
-      description: "Tienda e-commerce de productos de ropa y accesorios de moda, con un diseño moderno y funcional que permite a los usuarios navegar fácilmente por las categorías, agregar productos al carrito y realizar compras seguras.",
-      shortDescription: "Tienda e-commerce de moda",
-      images: [
-        "/images/berry1.png",
-        "/images/berry2.png",
-        "/images/berry3.png",
-        "/images/berry4.png",
-        "/images/berry5.png",
-        "/images/berry6.png"
-          ],
-          technologies: ["Php laravel", "MySQL"],
-          liveUrl: "",
-          githubUrl: "https://github.com/Sandoval0315/tienda1phplaravel"
-
-      },
+    },
     {
       id: 3,
       name: "HealthSyncs",
@@ -79,21 +62,7 @@ export default function Portafolio() {
       technologies: ["Astro", "React", "JavaScript", ],
       liveUrl: "https://ssimportss.vercel.app",
       githubUrl: "https://github.com/Sandoval0315/ssimports"
-    },
-      {
-        id: 5,
-        name: "Cafuki Shop",
-        description: "Desarrollada para entornos IOS es un Sitio web para una cafetería local que muestra el menú, ubicación, horarios y permite a los clientes realizar pedidos en línea para recoger o entrega a domicilio.",
-        shortDescription: "App movil para cafetería local",
-        images: [
-          "/images/cafuki1.png",
-          "/images/cafuki2.png",
-          "/images/cafuki3.png"
-        ],
-        technologies: ["Swift", "iOS", "Firebase"],
-        liveUrl: "https://github.com/Sandoval0315/cafukistore",
-        githubUrl: "https://github.com/Sandoval0315/cafukistore"
-      }
+    }
   ];
 
   // Variantes de animación para las cards

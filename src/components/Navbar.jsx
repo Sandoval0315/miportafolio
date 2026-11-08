@@ -109,9 +109,11 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "#inicio", label: "Inicio" },
+    { href: "#experiencia", label: "Experiencia" },
+    { href: "#formacion", label: "Formación" },
     { href: "#sobre-mi", label: "Sobre mí" },
     { href: "#portafolio", label: "Portafolio" },
-    { href: "tech-section", label: "Tecnologías" },
+    { href: "#tech-section", label: "Tecnologías" },
     { href: "#contacto", label: "Contacto" }
   ];
 
@@ -146,7 +148,6 @@ export default function Navbar() {
             animate="animate"
             whileHover={{ scale: 1.02 }}
           >
-            <img src="" alt="" />
             <span className="logo-text"><strong>Mi</strong>Portfolio</span>
           </motion.div>
 
@@ -175,6 +176,10 @@ export default function Navbar() {
           {/* Hamburger (solo móvil) */}
           <motion.button 
             className="nav-toggle"
+            type="button"
+            aria-label={sidebarOpen ? "Cerrar navegación" : "Abrir navegación"}
+            aria-expanded={sidebarOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -202,6 +207,7 @@ export default function Navbar() {
             {/* Sidebar */}
             <motion.div
               className="mobile-sidebar"
+              id="mobile-navigation"
               variants={sidebarVariants}
               initial="closed"
               animate="open"
@@ -212,6 +218,8 @@ export default function Navbar() {
                 <div className="sidebar-logo">Navegación</div>
                 <motion.button 
                   className="sidebar-close"
+                  type="button"
+                  aria-label="Cerrar navegación"
                   onClick={() => setSidebarOpen(false)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
